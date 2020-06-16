@@ -56,13 +56,14 @@ RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc
 # ------------------------------------------------------------------
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         libboost-all-dev \
+        libeigen3-dev \
         cmake \
         libtbb-dev \
         && \
         git clone https://github.com/borglab/gtsam.git && \
         mkdir -p gtsam/build && \
         cd gtsam/build && \
-        cmake .. && \
+        cmake -DGTSAM_USE_SYSTEM_EIGEN=ON .. && \
         make check -j16 && \
         make install -j16 && \
         cd ../.. && \
@@ -74,7 +75,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ros-melodic-grid-map-ros \
         ros-melodic-ecl-threads \
-        libeigen3-dev \
         liblua5.2-dev \
         libgoogle-glog-dev \
         libceres-dev \
