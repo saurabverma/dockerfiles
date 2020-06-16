@@ -21,6 +21,7 @@ RUN touch /root/.bashrc && \
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3-dev \
         python3-pip \
+        libeigen3-dev \
         git \
         gdb \
         vim \
@@ -59,7 +60,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         git clone https://github.com/borglab/gtsam.git && \
         mkdir -p gtsam/build && \
         cd gtsam/build && \
-        cmake .. && \
+        cmake -DGTSAM_USE_SYSTEM_EIGEN=ON .. && \
         make check -j16 && \
         make install -j16 && \
         cd ../.. && \
@@ -71,7 +72,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ros-kinetic-grid-map-ros \
         ros-kinetic-ecl-threads \
-        libeigen3-dev \
         liblua5.2-dev \
         libgoogle-glog-dev \
         libceres-dev \
