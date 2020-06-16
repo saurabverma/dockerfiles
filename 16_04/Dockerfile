@@ -21,7 +21,6 @@ RUN touch /root/.bashrc && \
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3-dev \
         python3-pip \
-        libeigen3-dev \
         git \
         gdb \
         vim \
@@ -54,6 +53,7 @@ RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc
 # ------------------------------------------------------------------
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         libboost-all-dev \
+        libeigen3-dev \
         cmake \
         libtbb-dev \
         && \
