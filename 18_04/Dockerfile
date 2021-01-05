@@ -70,11 +70,28 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         rm -rf gtsam
 
 # ==================================================================
+# flatbuffers
+# ------------------------------------------------------------------
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        git clone https://github.com/google/flatbuffers.git && \
+        mkdir -p flatbuffers/build && \
+        cd flatbuffers/build && \
+        cmake .. && \
+        make install -j16 && \
+        cd ../.. && \
+        rm -rf flatbuffers
+
+# ==================================================================
 # other dependencies
 # ------------------------------------------------------------------
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ros-melodic-grid-map-ros \
         ros-melodic-ecl-threads \
+        ros-melodic-velodyne-msgs \
+        ros-melodic-geographic-msgs \
+        ros-melodic-geodesy \
+        ros-melodic-timed-roslaunch \
+        libmrpt-dev \
         liblua5.2-dev \
         libgoogle-glog-dev \
         libceres-dev \
