@@ -64,8 +64,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 # ==================================================================
 # flatbuffers
 # ------------------------------------------------------------------
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        git clone https://github.com/google/flatbuffers.git && \
+RUN git clone https://github.com/google/flatbuffers.git && \
         mkdir -p flatbuffers/build && \
         cd flatbuffers/build && \
         cmake .. && \
@@ -83,7 +82,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         ros-noetic-geographic-msgs \
         ros-noetic-geodesy \
         # ros-noetic-timed-roslaunch \
-        libmrpt-dev \
+        # libmrpt-dev \
         liblua5.2-dev \
         libgoogle-glog-dev \
         libceres-dev \
