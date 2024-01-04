@@ -120,6 +120,10 @@ RUN PIP_INSTALL="python3 -m pip --no-cache-dir install --upgrade" && \
 RUN apt-get autoclean -y && \
         apt-get autoremove -y && \
         rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+RUN sudo mv /usr/include/flann/ext/lz4.h /usr/include/flann/ext/lz4.h.bak && \
+        sudo mv /usr/include/flann/ext/lz4hc.h /usr/include/flann/ext/lz4.h.bak && \
+        sudo ln -s /usr/include/lz4.h /usr/include/flann/ext/lz4.h && \
+        sudo ln -s /usr/include/lz4hc.h /usr/include/flann/ext/lz4hc.h
 
 WORKDIR /root/docker_mount/
 
