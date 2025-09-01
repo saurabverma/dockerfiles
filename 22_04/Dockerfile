@@ -24,6 +24,7 @@ RUN apt install -y --no-install-recommends \
         build-essential \
         python3-dev \
         python3-pip \
+        python3-venv \
         python-is-python3 \
         git \
         gdb \
