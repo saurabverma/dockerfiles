@@ -26,6 +26,7 @@ RUN apt install -y --no-install-recommends \
         python3-pip \
         python3-venv \
         python-is-python3 \
+        unzip \
         git \
         gdb \
         vim \
